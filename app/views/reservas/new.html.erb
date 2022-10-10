@@ -1,0 +1,36 @@
+<div class="columns is-vcentered is-centered">
+  <div class="column is-one-third is-centered">
+    <div class="box">
+      <%if notice %>
+        <%if params['success'] %>
+          <div class="notification is-success notice">
+            <p><i class='fas fa-circle'></i><%=" "+ notice%></p>
+          </div>
+          <%else %>
+          <div class="notification is-danger notice">
+            <p><i class='fas fa-circle'></i><%=" "+ notice%></p>
+          </div>
+        <%end %>
+      <%end %>
+    <p class="title is-5">Sala <%= params[:sala] %></p>
+    <p class="subtitle is-5 reserva_form_text">Asientos a reservar:</p>
+    <h1 id="asientos_text"></h1>
+      <%= form_with do |form| %>
+        <p class="subtitle is-5 reserva_form_text">Nombre:</p>
+        <%= form.text_field :name, class: 'input is-normal'%>
+        <%= form.hidden_field :reservation_seats, value: ""%>
+        <%= form.submit "Reservar Asientos" , class: 'button reservas_button'%>
+      <% end %>
+    </div>
+
+        <%=link_to "Pagina principal", home_path, class: "button is-rounded is-link" %>
+        <%=link_to "Volver a Cartelera", movies_by_date_path(date: params[:fecha]), class: "button is-rounded is-link" %>
+  </div>
+  <div class="column ">
+    <div id='svg_sala'></div>
+  </div>
+</div>
+<script>
+  let asientos = <%= @asientos %>;
+</script>
+<%= javascript_import_module_tag 'reservas' %>

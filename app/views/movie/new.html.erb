@@ -1,0 +1,96 @@
+<% if notice %>
+  <div class="columns is-centered">
+    <div class="column"></div>
+    <% if notice.class == String %>
+      <div class="column">
+        <div class="notification is-success notice">
+            <p><i class='fas fa-circle'></i><%=" "+ notice%></p>
+        </div>
+      </div>
+    <%else %>
+        <div class="column">
+          <div class="notification is-danger notice">
+            <% notice.values.each{|error| %>
+              <p><i class='fas fa-circle'></i><%=" " + error[0]%></p>
+            <% }%>
+          </div>
+        </div>
+
+    <% end %>
+    <div class="column"></div>
+    </div>
+<% end %>
+<div class="columns is-centered">
+  <div class="column is-one-third has-text-centered">
+    <div class="box">
+      <p class="title is-5">Registra una nueva pelicula:</p>
+      <%= form_with model: @movie do |form| %>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :Titulo , 'Titulo:'%>
+          </div>
+          <%= form.text_field :title, class:"input"%>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :Imagen, 'Imagen:' %>
+          </div>
+          <%= form.file_field :image , class:"input", accept: 'image/*'%>
+        </div>
+        <%= form.submit "Crear", class: "button is-rounded is-link"%>
+      <% end %>
+    </div>
+  </div>
+  <div class="column is-one-fifth"></div>
+  <div class="column is-one-third has-text-centered">
+    <div class="box">
+      <p class="title is-5">Asignar una pelicula a una sala</p>
+      <%= form_with model: @movie_times, url: new_movie_time_path do |form| %>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :movie_id, "Pelicula:", class:'label'%>
+          </div>
+          <div class="select is-fullwidth">
+            <%= form.collection_select :movie_id, Movie.all.order(:title), :id, :title, class:'select' %>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :time, "Horario:", class:'label' %>
+          </div>
+          <div class="select is-fullwidth">
+            <%= form.select :time, ['MATINÉ', 'TANDA', 'NOCHE'], class: 'select'%>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :date_start, "Día Inicio:", class:'label' %>
+          </div>
+          <%= form.date_field :date_start , class: 'input', min: Date.today%>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :date_end, "Día Termino: ", class:'label' %>
+          </div>
+          <%= form.date_field :date_end , class: 'input', min: Date.today%>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :room, "Sala: " , class:'label'%>
+          </div>
+          <div class="select is-fullwidth">
+            <%= form.select :room, (1..8)%>
+          </div>
+        </div>
+        <%= form.submit "Asignar", class: "button is-rounded is-link"%>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="columns is-centered">
+  <div class="column"></div>
+  <div class="column has-text-centered">
+    <%=link_to "Volver", home_path, class: "button is-rounded is-link" %>
+  </div>
+  <div class="column"></div>
+</div>

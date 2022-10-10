@@ -1,0 +1,34 @@
+require: rubocop-rails
+
+Layout/LineLength:
+  Max: 100
+  Exclude:
+    - 'Gemfile'
+AllCops:
+  NewCops: enable
+
+Metrics/AbcSize:
+  Max: 25
+  Exclude:
+    - 'db/**/*'
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - 'db/**/*'
+
+Rails/NotNullColumn:
+  Exclude:
+    - 'db/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'
+
+Style/Documentation:
+  Exclude:
+    - 'test/**/*'
+    - 'db/**/*'
+
+Rails/I18nLocaleTexts:
+  Enabled: false

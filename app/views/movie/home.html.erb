@@ -1,0 +1,26 @@
+<div class="home_container">
+  <div class="columns is-centered is-vcentered">
+    <div class="column is-one-quarter has-text-centered">
+      <div class="block has-text-centered">
+        <%= image_tag("cinema.png", class: 'image is-128x128 is-inline-block')%>
+      </div>
+      <div class="block has-text-centered">
+        <%=link_to "Registrar película", "/movie/new", class: "button is-rounded is-link" %>
+      </div>
+    </div>
+    <div class="column is-one-fifth"></div>
+    <div class="column is-one-quarter has-text-centered">
+      <p class="title is-5">Crear una reserva</p>
+      <%= form_with url: movies_by_date_path, method: :get do |form| %>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :query, "Día: ", class: 'label' %>
+          </div>
+          <%= form.date_field :date , class: 'input', required: 'required', min: Date.today%>
+        </div>
+        <%= form.submit "Buscar" , class: "button is-rounded is-link"%>
+      <% end %>
+
+    </div>
+  </div>
+</div>

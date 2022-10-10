@@ -1,0 +1,32 @@
+<p class="title is-3 has-text-centered">Cartelera para el <%=@date%></p>
+<div class="main_movie_times_container">
+    <% @filter.each do |movie|%>
+          <div class="movie_time_container">
+              <%if movie.image.attached?%>
+                  <img class="movie_image" src="<%=Rails.env.production? ? movie.image.url : url_for(movie.image)%>"/>
+              <%else%>
+              <img class="movie_image" src="https://bulma.io/images/placeholders/480x600.png"/>
+            <%end%>
+              <div class="movie_title" >
+                  <p class="title is-5 has-text-white"><%= movie.title %></p>
+              </div>
+              <% movie_filter = movie.movie_times.group_by{ |v| v.time }%>
+              <% movie_filter.keys.each do |time|%>
+                <div class="times_container" >
+
+                <b><%= time%>:</b>
+                <% movie_filter[time].each do |sala|%>
+                <%= link_to "Sala #{sala['room']}", new_reserva_path(sala['room'], @date, time), class: 'sala_button button is-light is-outlined is-small button is-rounded'%>
+                <%end%>
+                </div>
+              <%end%>
+          </div>
+    <% end %>
+</div>
+<div class="columns is-centered">
+  <div class="column"></div>
+  <div class="column has-text-centered">
+    <%=link_to "Volver", home_path, class: "button is-rounded is-link home_button" %>
+  </div>
+  <div class="column"></div>
+</div>

@@ -1,0 +1,26 @@
+// Place all the styles related to the Reservas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.reserva_form_div{
+  background-color: gray;
+}
+.plot{
+  background-color: snow;
+  border: 1px solid black;
+}
+.asiento{
+}
+#svg_sala{
+  margin-top: 100px;
+}
+#asientos_text{
+  word-break: break-word;
+  min-height: 20px;
+  margin-bottom: 5px;
+}
+.reserva_form_text{
+  margin-bottom: 5px !important;
+}
+.reservas_button{
+  margin-top: 10px
+}
