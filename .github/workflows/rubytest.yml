@@ -35,8 +35,8 @@ jobs:
           ruby-version: '3.1.2'
           bundler-cache: true
       
-      - name: migrations
-        run: bin/rails db:migrate RAILS_ENV=test
+      - name:  Migrations
+        run: bundle exec rails db:migrate
           
       - name: Install dependencies
         run: bundle install
