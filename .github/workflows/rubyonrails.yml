@@ -28,4 +28,3 @@ jobs:
       - name: Run SimpleCov
         run: bundle exec rspec
         
-        
