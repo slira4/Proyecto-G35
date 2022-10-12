@@ -82,5 +82,5 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "rspec", "~> 3.11"
-gem "simplecov-lcov", "~> 0.8.0"
+gem 'rspec', '~> 3.11'
+gem 'simplecov-lcov', '~> 0.8.0'
