@@ -22,7 +22,7 @@ jobs:
           POSTGRES_DB: rails_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
-          run: bin/rails db:migrate RAILS_ENV=test
+
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
@@ -34,6 +34,9 @@ jobs:
         with:
           ruby-version: '3.1.2'
           bundler-cache: true
+      
+      - name: migrations
+        run: bin/rails db:migrate RAILS_ENV=test
           
       - name: Install dependencies
         run: bundle install
