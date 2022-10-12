@@ -33,6 +33,6 @@ Style/Documentation:
 Rails/I18nLocaleTexts:
   Enabled: false
 
-//Agregamos una condición para que los line endings LF no causen probelmas 
+#Agregamos una condición para que los line endings LF no causen probelmas 
 Layout/EndOfLine:
   Enabled: False
