@@ -72,3 +72,6 @@ yarn-debug.log*
 /node_modules
 
 /config/cloudinary.yml
+
+# Ignore application configuration
+/config/application.yml
