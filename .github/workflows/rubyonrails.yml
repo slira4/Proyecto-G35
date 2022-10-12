@@ -28,4 +28,7 @@ jobs:
       - name: Run SimpleCov
         run: bundle exec rspec
         
+      - name: Run tests
+        run: bin/rspec
+        
         
