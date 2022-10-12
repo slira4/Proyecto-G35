@@ -1,6 +1,6 @@
 # Proyecto DCCinema Grupo 35
 #### Entrega: 1
-#### Url Heroku:
+#### Url Heroku: https://proyecto-g35-testing.herokuapp.com/
 
 
 ### Logros
