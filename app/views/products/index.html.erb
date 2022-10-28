@@ -3,12 +3,16 @@
 <h1>Products</h1>
 <p>
   <%= link_to "Back", home_path %>
+  <a> | </a>
+  <%= link_to "New product", new_product_path %>
 </p>
+<br>
 
 <%= form_with scope: 'post' do |f| %>
   <%= f.label :category, for: :product_category %>
   <%= f.select :category, ["Todos", "Bebestible", "Comestible", "Souvenir"], { include_blank: 'Elige una categoría' }, {  id: :post_category } %>
 <% end %>
+<br>
 
 <div id="products">
   <% @products.each do |product| %>
@@ -16,7 +20,6 @@
     <p>
       <%= link_to "Show this product", product %>
     </p>
+    <br>
   <% end %>
 </div>
-
-<%= link_to "New product", new_product_path %>
