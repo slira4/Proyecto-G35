@@ -23,7 +23,10 @@ class Product < ApplicationRecord
         return false
       end
     end
-    errors.add(:weight_volume, 'souvenirs doesn´t have weight or volume') if weight_volume
+    if !weight_volume.blank?
+        errors.add(:weight_volume, "Souvenir shouldn´t have waight or volumes")
+        return false
+      end
     true
   end
 end
