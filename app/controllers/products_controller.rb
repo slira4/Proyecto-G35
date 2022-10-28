@@ -6,8 +6,14 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    @products = if params['category'].blank? || (params['category'] == 'Todos')
+                  Product.all
+                else
+                  Product.where(category: params['category'])
+                end
   end
+
+  def filter_by_category; end
 
   # GET /products/1 or /products/1.json
   def show; end

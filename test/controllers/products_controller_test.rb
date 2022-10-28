@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
-  setup do
+  def setup
     @product = products(:one)
   end
 
@@ -20,12 +20,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test 'should create product' do
     assert_difference('Product.count') do
       post products_url,
-           params: { product: { category: @product.category,
-                                name: @product.name, price: @product.price,
-                                weight_volume: @product.weight_volume } }
+           params: { product: { name: 'Coke', price: 1000, category: 'Bebestible', weight_volume: 500 } }
     end
 
-    assert_redirected_to product_url(Product.last)
+    assert_redirected_to products_url
   end
 
   test 'should show product' do
@@ -39,11 +37,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update product' do
-    patch product_url(@product),
-          params: { product: { category: @product.category,
-                               name: @product.name, price: @product.price,
-                               weight_volume: @product.weight_volume } }
-    assert_redirected_to product_url(@product)
+    new_product = Product.create(name: 'Coke', price: 1000, category: 'Bebestible', weight_volume: 500)
+    patch product_url(new_product.id),
+           params: { product: { name: 'Coke', price: 1500, category: 'Bebestible', weight_volume: 500 } }
+    assert_redirected_to product_url(new_product.id)
   end
 
   test 'should destroy product' do

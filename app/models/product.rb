@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+#  Model for product
 class Product < ApplicationRecord
   validates :name, presence: true
   validates :price, presence: true
@@ -23,10 +24,6 @@ class Product < ApplicationRecord
         return false
       end
     end
-    if !weight_volume.blank?
-        errors.add(:weight_volume, "Souvenir shouldn´t have waight or volumes")
-        return false
-      end
-    true
+    return true
   end
 end

@@ -8,9 +8,10 @@
 </p>
 <br>
 
-<%= form_with scope: 'post' do |f| %>
+<%= form_with url: '/products', method: :get do |f| %>
   <%= f.label :category, for: :product_category %>
   <%= f.select :category, ["Todos", "Bebestible", "Comestible", "Souvenir"], { include_blank: 'Elige una categoría' }, {  id: :post_category } %>
+  <%= f.submit "Search" %>
 <% end %>
 <br>
 
