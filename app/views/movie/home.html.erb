@@ -8,7 +8,14 @@
         <%=link_to "Registrar película", "/movie/new", class: "button is-rounded is-link" %>
       </div>
     </div>
-    <div class="column is-one-fifth"></div>
+    <div class="column is-one-quarter has-text-centered">
+      <div class="block has-text-centered">
+        <%= image_tag("products.png", class: 'image is-128x128 is-inline-block')%>
+      </div>
+      <div class="block has-text-centered">
+        <%=link_to "Ingresar a la tienda", "/products", class: "button is-rounded is-link" %>
+      </div>
+    </div>
     <div class="column is-one-quarter has-text-centered">
       <p class="title is-5">Crear una reserva</p>
       <%= form_with url: movies_by_date_path, method: :get do |form| %>

@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Products</h1>
+<p>
+  <%= link_to "Back", home_path %>
+  <a> | </a>
+  <%= link_to "New product", new_product_path %>
+</p>
+<br>
+
+<%= form_with url: '/products', method: :get do |f| %>
+  <%= f.label :category, for: :product_category %>
+  <%= f.select :category, ["Todos", "Bebestible", "Comestible", "Souvenir"], { include_blank: 'Elige una categoría' }, {  id: :post_category } %>
+  <%= f.submit "Search" %>
+<% end %>
+<br>
+
+<div id="products">
+  <% @products.each do |product| %>
+    <%= render product %>
+    <p>
+      <%= link_to "Show this product", product %>
+    </p>
+    <br>
+  <% end %>
+</div>
