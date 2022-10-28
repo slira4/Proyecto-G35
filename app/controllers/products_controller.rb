@@ -25,9 +25,9 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     Rails.logger.debug product_params
     if @product.save
-      redirect_to '/products', notice: 'Pelicula creada con exito'
+      redirect_to '/products', notice: 'Producto creado con exito'
     else
-      redirect_to '/products/new', notice: @product.errors.messages
+      redirect_to '/products', notice: @product.errors.messages
     end
   end
 
