@@ -20,7 +20,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test 'should create product' do
     assert_difference('Product.count') do
       post products_url,
-           params: { product: { name: 'Coke', price: 1000, category: 'Bebestible', weight_volume: 500 } }
+           params: { product: { name: 'Coke', price: 1000, category: 'Bebestible',
+                                weight_volume: 500 } }
     end
 
     assert_redirected_to products_url
@@ -37,9 +38,11 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update product' do
-    new_product = Product.create(name: 'Coke', price: 1000, category: 'Bebestible', weight_volume: 500)
+    new_product = Product.create(name: 'Coke', price: 1000, category: 'Bebestible',
+                                 weight_volume: 500)
     patch product_url(new_product.id),
-           params: { product: { name: 'Coke', price: 1500, category: 'Bebestible', weight_volume: 500 } }
+          params: { product: { name: 'Coke', price: 1500, category: 'Bebestible',
+                               weight_volume: 500 } }
     assert_redirected_to product_url(new_product.id)
   end
 

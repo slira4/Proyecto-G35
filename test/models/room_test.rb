@@ -3,10 +3,6 @@
 require 'test_helper'
 
 class RoomTest < ActiveSupport::TestCase
-  def setup
-    room = Room.create(number: 10)
-  end
-
   def teardown
     Room.destroy_all
   end

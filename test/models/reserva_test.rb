@@ -21,7 +21,7 @@ class ReservaTest < ActiveSupport::TestCase
                              name: 'Pedro')
     assert_equal(true, reserva.valid?)
   end
-  test 'Reserva con parámetros inválidos' do 
+  test 'Reserva con parámetros inválidos' do
     reserva = Reserva.create(sala: 6, fecha: Date.new(2022, 10, 11), asiento: 10, horario: 'TANDA',
                              name: 'Pedro')
     assert_equal(false, reserva.valid?)
