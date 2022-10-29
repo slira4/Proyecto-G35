@@ -13,8 +13,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should filter by category and get index' do
-    get products_url, 
-    params: { category: @product.category }
+    get products_url,
+        params: { category: @product.category }
     assert_response :success
   end
 
@@ -35,7 +35,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should not create product' do
     post products_url,
-          params: { product: { name: 'Coke', price: "", category: 'Bebestible',
+         params: { product: { name: 'Coke', price: '', category: 'Bebestible',
                               weight_volume: 500 } }
 
     assert_redirected_to products_url
@@ -64,7 +64,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     new_product = Product.create(name: 'Coke', price: 1000, category: 'Bebestible',
                                  weight_volume: 500)
     patch product_url(new_product.id),
-          params: { product: { name: 'Coke', price: "", category: 'Bebestible',
+          params: { product: { name: 'Coke', price: '', category: 'Bebestible',
                                weight_volume: 500 } }
     assert_response :unprocessable_entity
   end
