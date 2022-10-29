@@ -12,6 +12,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should filter by category and get index' do
+    get products_url,
+        params: { category: @product.category }
+    assert_response :success
+  end
+
   test 'should get new' do
     get new_product_url
     assert_response :success
@@ -23,6 +29,14 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
            params: { product: { name: 'Coke', price: 1000, category: 'Bebestible',
                                 weight_volume: 500 } }
     end
+
+    assert_redirected_to products_url
+  end
+
+  test 'should not create product' do
+    post products_url,
+         params: { product: { name: 'Coke', price: '', category: 'Bebestible',
+                              weight_volume: 500 } }
 
     assert_redirected_to products_url
   end
@@ -44,6 +58,15 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
           params: { product: { name: 'Coke', price: 1500, category: 'Bebestible',
                                weight_volume: 500 } }
     assert_redirected_to product_url(new_product.id)
+  end
+
+  test 'should not update product' do
+    new_product = Product.create(name: 'Coke', price: 1000, category: 'Bebestible',
+                                 weight_volume: 500)
+    patch product_url(new_product.id),
+          params: { product: { name: 'Coke', price: '', category: 'Bebestible',
+                               weight_volume: 500 } }
+    assert_response :unprocessable_entity
   end
 
   test 'should destroy product' do
