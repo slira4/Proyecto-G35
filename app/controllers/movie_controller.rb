@@ -11,7 +11,11 @@ class MovieController < ApplicationController
   def post
     title = params[:title]
     image = params[:image]
-    @movie = Movie.new(title:, image:)
+    age = params[:age]
+    sucursal = params[:sucursal]
+    languaje = params[:languaje]
+    
+    @movie = Movie.new(title:, image:, age:, sucursal:, languaje:)
     if @movie.save
       redirect_to '/movie/new', notice: 'Pelicula creada con exito'
     else

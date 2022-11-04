@@ -37,6 +37,24 @@
           </div>
           <%= form.file_field :image , class:"input", accept: 'image/*'%>
         </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :Edad , 'Edad:'%>
+          </div>
+          <%= form.number_field :age, class:"input"%>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :Sucursal , 'Sucursal:'%>
+          </div>
+          <%= form.select :sucursal, ["Santiago", "Regional"], class: 'input', required: 'required'%>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :Idioma , 'Idioma:'%>
+          </div>
+          <%= form.select :languaje, ["Español", "Inglés"], class: 'input', required: 'required'%>
+        </div>
         <%= form.submit "Crear", class: "button is-rounded is-link"%>
       <% end %>
     </div>
