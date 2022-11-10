@@ -19,15 +19,17 @@ class MovieControllerTest < ActionDispatch::IntegrationTest
 
   test 'should post a new movie' do
     assert_difference('Movie.count') do
-      post "/movie/new", params: { title: 'Batman', image: nil, age: 18, sucursal: 'Santiago', languaje: 'Español' }
+      post '/movie/new',
+           params: { title: 'Batman', image: nil, age: 18, sucursal: 'Santiago',
+                     languaje: 'Español' }
     end
-      
+
     assert_redirected_to movie_new_url
   end
 
   test 'should not post a new movie' do
     post create_movie_url,
-         params: { movie: { title: '', image: ''  } }
+         params: { movie: { title: '', image: '' } }
     assert_redirected_to '/movie/new'
   end
 
@@ -42,7 +44,10 @@ class MovieControllerTest < ActionDispatch::IntegrationTest
 
   test 'should assign a movie time' do
     movie = Movie.create(title: 'Matrix', age: 18, sucursal: 'Santiago', languaje: 'Español')
-    post new_movie_time_url, params: { movie_time: { movie_id: movie.id, time: 'TANDA', date_start: Date.new(2022, 10, 11), date_end: Date.new(2022, 10, 12), room: 5}}
+    post new_movie_time_url,
+         params: { movie_time: { movie_id: movie.id, time: 'TANDA',
+                                 date_start: Date.new(2022, 10, 11),
+                                 date_end: Date.new(2022, 10, 12), room: 5 } }
     assert_redirected_to '/movie/new'
   end
   # ESTE PARA FILTRAR POR FECHA
