@@ -4,7 +4,7 @@ require 'test_helper'
 
 class ReservasControllerTest < ActionDispatch::IntegrationTest
   def setup
-    movie = Movie.create(title: 'Matrix')
+    movie = Movie.create(title: 'Matrix', age: 18, sucursal: 'Santiago', languaje: 'Español')
     MovieTime.create(room: 5, date_start: Date.new(2000, 11, 10),
                      date_end: Date.new(2000, 11, 12), time: 'TANDA',
                      movie_id: movie.id)
@@ -25,7 +25,7 @@ class ReservasControllerTest < ActionDispatch::IntegrationTest
   test 'Posting a new reserva' do
     assert_difference 'Reserva.count' do
       post new_reserva_url(5, '2000-11-12', 'TANDA'),
-           params: { reservation_seats: 'C-3', name: 'Diego' }
+          params: { reservation_seats: 'C-3', name: 'Diego' }
     end
   end
 
@@ -50,7 +50,7 @@ class ReservasControllerTest < ActionDispatch::IntegrationTest
   test 'should make a new reservationas for a 4 letter seat' do
     assert_difference 'Reserva.count' do
       post new_reserva_url(5, '2000-11-12', 'TANDA'),
-           params: { reservation_seats: 'A-12', name: 'Diego' }
+          params: { reservation_seats: 'A-12', name: 'Diego' }
     end
   end
 end

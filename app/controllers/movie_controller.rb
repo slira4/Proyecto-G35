@@ -15,10 +15,11 @@ class MovieController < ApplicationController
     sucursal = params[:sucursal]
     languaje = params[:languaje]
 
-    @movie = Movie.new(title:, image:, age:, sucursal:, languaje:)
+    @movie = Movie.new(title: , image: , age: , sucursal: , languaje: )
     if @movie.save
       redirect_to '/movie/new', notice: 'Pelicula creada con exito'
     else
+      puts @movie.errors.messages
       redirect_to '/movie/new', notice: @movie.errors.messages
     end
   end
@@ -50,8 +51,8 @@ class MovieController < ApplicationController
               end
   end
 
-  def list_by_sucursal
-    @sucursal = params[:sucursal]
-    @filter = Movie.where(movies: { sucursal: @sucursal }).references(:movies)
-  end
+  # def list_by_sucursal
+  #   @sucursal = params[:sucursal]
+  #   @filter = Movie.where(movies: { sucursal: @sucursal }).references(:movies)
+  # end
 end

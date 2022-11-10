@@ -9,7 +9,7 @@ class MovieTimeTest < ActiveSupport::TestCase
   end
 
   test 'Programar película en sala ya ocupada' do
-    movie = Movie.create(title: 'Movie')
+    movie = Movie.create(title: 'Matrix', age: 18, sucursal: 'Santiago', languaje: 'Español')
     MovieTime.create(room: 5, date_start: Date.new(2022, 10, 10),
                      date_end: Date.new(2022, 10, 12),
                      time: 'TANDA', movie_id: movie.id)
@@ -20,7 +20,7 @@ class MovieTimeTest < ActiveSupport::TestCase
   end
 
   test 'Fecha de inicio tiene que ser igual o previa a fecha de término' do
-    movie = Movie.create(title: 'Movie')
+    movie = Movie.create(title: 'Matrix', age: 18, sucursal: 'Santiago', languaje: 'Español')
     new_movie_time = MovieTime.create(room: 6, date_start: Date.new(2022, 10, 11),
                                       date_end: Date.new(2022, 10, 10),
                                       time: 'TANDA', movie_id: movie.id)

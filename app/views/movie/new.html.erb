@@ -24,22 +24,22 @@
   <div class="column is-one-third has-text-centered">
     <div class="box">
       <p class="title is-5">Registra una nueva pelicula:</p>
-      <%= form_with model: @movie do |form| %>
+      <%= form_with model: @movies, url: create_movie_path do |form| %>
         <div class="field is-horizontal">
           <div class="field-label is-medium">
-            <%= form.label :Titulo , 'Titulo:'%>
+            <%= form.label :title , 'Titulo:'%>
           </div>
           <%= form.text_field :title, class:"input"%>
         </div>
         <div class="field is-horizontal">
           <div class="field-label is-medium">
-            <%= form.label :Imagen, 'Imagen:' %>
+            <%= form.label :image, 'Imagen:' %>
           </div>
           <%= form.file_field :image , class:"input", accept: 'image/*'%>
         </div>
         <div class="field is-horizontal">
           <div class="field-label is-medium">
-            <%= form.label :Edad , 'Edad:'%>
+            <%= form.label :age , 'Edad:'%>
           </div>
           <%= form.number_field :age, class:"input"%>
         </div>
@@ -51,7 +51,7 @@
         </div>
         <div class="field is-horizontal">
           <div class="field-label is-medium">
-            <%= form.label :Idioma , 'Idioma:'%>
+            <%= form.label :languaje , 'Idioma:'%>
           </div>
           <%= form.select :languaje, ["Español", "Inglés"], class: 'input', required: 'required'%>
         </div>

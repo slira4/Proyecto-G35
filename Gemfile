@@ -80,6 +80,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'simplecov'
   gem 'webdrivers'
+  gem 'rails-controller-testing'
 end
 
 gem 'rspec', '~> 3.11'
