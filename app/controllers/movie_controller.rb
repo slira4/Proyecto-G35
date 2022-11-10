@@ -11,10 +11,15 @@ class MovieController < ApplicationController
   def post
     title = params[:title]
     image = params[:image]
-    @movie = Movie.new(title:, image:)
+    age = params[:age]
+    sucursal = params[:sucursal]
+    languaje = params[:languaje]
+
+    @movie = Movie.new(title:, image:, age:, sucursal:, languaje:)
     if @movie.save
       redirect_to '/movie/new', notice: 'Pelicula creada con exito'
     else
+      Rails.logger.debug @movie.errors.messages
       redirect_to '/movie/new', notice: @movie.errors.messages
     end
   end
@@ -32,8 +37,22 @@ class MovieController < ApplicationController
 
   def list_by_date
     @date = params[:date]
-    @filter = Movie.includes(:movie_times).where(['movie_times.date_start <= ? and
-                                                   ? <= movie_times.date_end',
-                                                  @date, @date]).references(:movie_times)
+    @age = params[:age]
+    @languaje = params[:languaje]
+    @sucursal = params[:sucursal]
+    @filter = Movie.includes(:movie_times).where(['movie_times.date_start <= ?
+              and ? <= movie_times.date_end', @date, @date]).references(:movie_times)
+    @filter = @filter.where(movies: { sucursal: @sucursal }).references(:movies)
+    @filter = @filter.where(['movies.age <= ?', @age]).references(:movies) if @age.to_i < 18
+    @filter = if @languaje == 'Español'
+                @filter.order('movies.languaje').references(:movies)
+              else
+                @filter.order('movies.languaje DESC').references(:movies)
+              end
   end
+
+  # def list_by_sucursal
+  #   @sucursal = params[:sucursal]
+  #   @filter = Movie.where(movies: { sucursal: @sucursal }).references(:movies)
+  # end
 end

@@ -10,6 +10,17 @@
               <div class="movie_title" >
                   <p class="title is-5 has-text-white"><%= movie.title %></p>
               </div>
+              <br>
+              <div class="movie_info" >
+                  <p class="title is-5 has-text-white">Edad: <%= movie.age %></p>
+              </div>
+              <div class="movie_info" >
+                  <p class="title is-5 has-text-white">Sucursal: <%= movie.sucursal %></p>
+              </div>
+              <div class="movie_info" >
+                  <p class="title is-5 has-text-white">Idioma: <%= movie.languaje %></p>
+              </div>
+              <br>
               <% movie_filter = movie.movie_times.group_by{ |v| v.time }%>
               <% movie_filter.keys.each do |time|%>
                 <div class="times_container" >
