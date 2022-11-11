@@ -38,11 +38,14 @@ jobs:
           ruby-version: '3.1.2'
           bundler-cache: true
           
+      - name: start postgresql service
+        run: sudo service postgresql start
+        
       - name: Run rubocop
         run: bundle exec rubocop
         
       - name:  Migrations
-        run: bundle exec rails db:migrate
+        run: bundle exec rails db:migrate RAILS_ENV=test
       
       - name: Run SimpleCov
         run: bundle exec rspec
