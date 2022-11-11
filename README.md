@@ -6,7 +6,7 @@
 
 
 ### Logros
- Al correr ```rails test````, se genera un archivo de coverage con 91.67% de coverage. Sin embargo,
+ Al correr ```rails test```, se genera un archivo de coverage con 91.67% de coverage. Sin embargo,
  tanto el coverage de los modelos como de los controladores es de 100%.
 
 ### Consideraciones generales para la correcion
