@@ -2,8 +2,10 @@
 
 class AddColumnsToMovie < ActiveRecord::Migration[7.0]
   def change
-    add_column :movies, :age, :integer
-    add_column :movies, :sucursal, :string
-    add_column :movies, :languaje, :string
+    change_table :movies, bulk: true do |t|
+      t.column :movies, :age, :integer, null: false
+      t.column :movies, :sucursal, :string, null: false
+      t.column :movies, :languaje, :string, null: false
+    end
   end
 end
