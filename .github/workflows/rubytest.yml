@@ -22,6 +22,8 @@ jobs:
           POSTGRES_DB: rails_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
+          
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
 
     env:
@@ -35,11 +37,7 @@ jobs:
         with:
           ruby-version: '3.1.2'
           bundler-cache: true
-      - name: Start PostgreSQL on Ubuntu
-        run: |
-          sudo systemctl start postgresql.service
-          pg_isready
-      
+
       - name:  Migrations
         run: bundle exec rails db:migrate
           
