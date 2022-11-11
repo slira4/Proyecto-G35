@@ -22,7 +22,6 @@ jobs:
           POSTGRES_DB: rails_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     env:
       RAILS_ENV: test
@@ -37,7 +36,7 @@ jobs:
           bundler-cache: true
       
       - name:  Migrations
-        run: bundle exec rails db:migrate RAILS_ENV=test
+        run: bundle exec rails db:migrate
           
       - name: Install dependencies
         run: bundle install
