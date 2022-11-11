@@ -23,6 +23,7 @@ jobs:
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
 
+
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
@@ -34,6 +35,10 @@ jobs:
         with:
           ruby-version: '3.1.2'
           bundler-cache: true
+      - name: Start PostgreSQL on Ubuntu
+        run: |
+          sudo systemctl start postgresql.service
+          pg_isready
       
       - name:  Migrations
         run: bundle exec rails db:migrate
