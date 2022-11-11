@@ -36,3 +36,6 @@ Rails/I18nLocaleTexts:
 #Agregamos una condición para que los line endings LF no causen probelmas 
 Layout/EndOfLine:
   Enabled: False
+
+Rails/BulkChangeTable:
+  Enabled: False
