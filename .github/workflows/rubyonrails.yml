@@ -40,6 +40,9 @@ jobs:
           
       - name: Run rubocop
         run: bundle exec rubocop
+        
+      - name:  Migrations
+        run: bundle exec rails db:migrate
       
       - name: Run SimpleCov
         run: bundle exec rspec
